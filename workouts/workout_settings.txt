@@ -1,0 +1,48 @@
+This is the setting file for this python script
+Add all the workouts you wish in the Workouts setting list and add settings for those workouts
+Available settings for workouts are the following
+    ScoredByTime =>    mandatory 
+        -   Workouts are either won by having the best time or the highest score
+        -   True means it's scored by the best time
+        -   This field effects how the scores are calculated
+
+###Workouts
+    workout1
+    workout2
+    workout3
+    workout4
+    workout5
+###Workouts
+
+
+###workout1
+    ###ScoredByTime
+        True
+    ###ScoredByTime
+###workout1
+
+###workout2
+    ###ScoredByTime
+        False
+    ###ScoredByTime
+###workout2
+
+
+###workout3
+    ###ScoredByTime
+        True
+    ###ScoredByTime
+###workout3
+
+###workout4
+    ###ScoredByTime
+        False
+    ###ScoredByTime
+###workout2
+
+
+###workout5
+    ###ScoredByTime
+        True
+    ###ScoredByTime
+###workout3
