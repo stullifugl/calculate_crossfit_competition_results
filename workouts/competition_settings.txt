@@ -6,14 +6,27 @@ Available settings for workouts are the following
         -   True means it's scored by the best time
         -   This field effects how the scores are calculated
 
+###CompetitionName
+    Jolaleikarnir
+###CompetitionName
+
+###CompetitionSettings
+    ###CompetitionCategories
+        RX
+        Scaled
+    ###CompetitionCategories
+
+    ###TeamCompetition
+        True
+    ###TeamCompetition
+###CompetitionSettings
+
 ###Workouts
     workout1
     workout2
     workout3
     workout4
     workout5
-    workout6
-    workout7
 ###Workouts
 
 
@@ -29,7 +42,6 @@ Available settings for workouts are the following
     ###ScoredByTime
 ###workout2
 
-
 ###workout3
     ###ScoredByTime
         True
@@ -47,15 +59,3 @@ Available settings for workouts are the following
         True
     ###ScoredByTime
 ###workout5
-
-###workout6
-    ###ScoredByTime
-        True
-    ###ScoredByTime
-###workout6
-
-###workout7
-    ###ScoredByTime
-        True
-    ###ScoredByTime
-###workout7

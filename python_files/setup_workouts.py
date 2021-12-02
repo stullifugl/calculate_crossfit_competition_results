@@ -2,25 +2,9 @@ import csv
 import python_files.shared as shared
 import python_files.consts as consts
 import random
+import os
 
-fieldnames = ['_', 'NafnLids', 'Skor']
-
-def getSettingInLineList(setting, lineList):
-    returnList = []
-
-    foundSettingInitializer = False
-    for line in lineList:
-        if '###' + setting in line and foundSettingInitializer == True:
-            foundSettingInitializer = False
-            break
-
-        if foundSettingInitializer == True:
-            returnList.append(line.strip())
-
-        if '###' + setting in line:
-            foundSettingInitializer = True
-
-    return returnList
+PATH = 'results'
 
 def appendZeroIfNeededToTime(number):
     if number < 10:
@@ -38,10 +22,9 @@ def generateRandomScore(scoredByTime):
         return randomNumberOne + ':' + randomNumberTwo
 
 def getWorkoutSetting(fileName, workoutSetting):
-    fileLines = shared.readFile('workout_settings.txt')
-    workoutSettingsLines = getSettingInLineList(fileName, fileLines)
+    workoutSettingsLines = shared.getSettingInLineList(fileName)
     
-    return getSettingInLineList(workoutSetting, workoutSettingsLines)[0]
+    return shared.getSettingInLineList(workoutSetting, workoutSettingsLines)[0]
 
 def fillWorkoutsWithData(writer, fileName):
     scoredByTime = False
@@ -58,26 +41,66 @@ def fillWorkoutsWithData(writer, fileName):
         writer.writerow(dict)
 
 
-def createCsvFiles(fileNames):
+def createWorkoutFiles(fileNames):
+    path = PATH + '/' + shared.getCompetitionName() + '/'
+
     for name in fileNames:
-        with open('workouts/' + name + '.csv', 'w', encoding='UTF8', newline='') as f:
-            writer = csv.DictWriter(f, fieldnames=fieldnames)
+        with open(path + name + '.csv', 'w', encoding='UTF8', newline='') as f:
+            writer = csv.DictWriter(f, fieldnames=shared.getWorkoutFields())
             writer.writeheader()
 
             # Add all the teams to the workout files as well
             fillWorkoutsWithData(writer, name)
 
 def getAllWorkouts():
-    fileLines = shared.readFile('workout_settings.txt')
-    fileNameList = getSettingInLineList('Workouts', fileLines)
+    fileNameList = shared.getSettingInLineList('Workouts')
 
     return fileNameList
 
-def createWorkoutFiles():
-    fileNameList = getAllWorkouts()
-    createCsvFiles(fileNameList)
+def addRandomDataToTeamFile(writer, fields):
+    nrOfTeams = random.randint(30, 50)
+    categories = shared.getCategories()
+
+    dict = {}
+    for i in range(0, nrOfTeams):
+        dict = {}
+        randomCategory = random.randint(len(fields) - len(categories), len(fields) - 1)
+        for x in range(0, len(fields)):
+            if '_' in fields[x]:
+                dict[fields[x]] = '_'
+            elif 'Nafn' in fields[x]:
+                if fields[x] == 'NafnLids':
+                    dict[fields[x]] = 'Lid' + str(i)
+                else:
+                    dict[fields[x]] = fields[x] + str(i)
+            else:
+                if x == randomCategory:
+                    dict[fields[x]] = 'x'
+                else:
+                    dict[fields[x]] = ''
+        writer.writerow(dict)
+
+def createTeamFile(path):
+    fields = shared.getTeamFields()
+
+    with open(path, 'w', encoding='UTF8', newline='') as f:
+        writer = csv.DictWriter(f, fieldnames=fields)
+        writer.writeheader()
+
+        if consts.ADDRANDOMSCORES:
+            addRandomDataToTeamFile(writer, fields)
+
+def createCompetitionFolder():
+    competitionName = shared.getCompetitionName()
+    
+    if not os.path.exists(PATH + '/' + competitionName):
+        os.mkdir(PATH + '/' + competitionName)
+    
+    createTeamFile(PATH + '/' + competitionName + '/lidin.csv')
 
 def setupWorkouts():
-    createWorkoutFiles()
+    fileNameList = getAllWorkouts()
+    createCompetitionFolder()
+    createWorkoutFiles(fileNameList)
 
     
