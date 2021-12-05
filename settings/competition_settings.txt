@@ -5,6 +5,10 @@ Available settings for workouts are the following
         -   Workouts are either won by having the best time or the highest score
         -   True means it's scored by the best time
         -   This field effects how the scores are calculated
+The name of the competition is defined in the CompetitionName setting
+The settings availabe for every competition are as follows
+    CompetitionCategories -> The categories that competitors can compete in (f.x. RX and Scaled)
+    TeamCompetition -> Is this an individual competition or a team competition with two competitors
 
 ###CompetitionName
     Jolaleikarnir
