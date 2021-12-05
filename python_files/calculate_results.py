@@ -8,20 +8,30 @@ PATH = 'results'
 
 def getDataFromWorkoutForTeam(team, workoutDictList):
     for dict in workoutDictList:
-        if dict['NafnLids'] == team['NafnLids']:
+        if dict[shared.getWorkoutFieldToIndexFor()] == team[shared.getWorkoutFieldToIndexFor()]:
             return dict['Points'], dict['Skor']
+
+    print("team not found")
+    print(team)
+    print(workoutDictList)
+    print()
+    print()
+    print()
+    print()
+    print()
+    print()
 
     shared.logError("Could not find team in function getDataFromWorkoutForTeam")
     return 0.0
 
-def calculateTeamsScore(workoutDataList):
+def calculateTeamsScore(workoutDataList, categoryString):
     totalTeamScoreList = []
-    teams = shared.getDataFromFile('lidin.csv')
+    teams = shared.getTeamsInCertainCategory(categoryString)
 
     for team in teams:
         dict = {}
         totalPoints = 0
-        dict['NafnLids'] = team['NafnLids']
+        dict[shared.getWorkoutFieldToIndexFor()] = team[shared.getWorkoutFieldToIndexFor()]
         for workoutDict in workoutDataList:
             pointsForWorkout, workoutScore = getDataFromWorkoutForTeam(team, workoutDict['results'])
             dict[workoutDict['workout'] + '_points'] = pointsForWorkout
@@ -79,8 +89,10 @@ def populateGeneralResults(folderPath, teamScoreList):
             writer.writerow(dict)
 
 
-def generateFiles(teamScoreList):
-    folderPath = PATH + '/' + shared.getCompetitionName()
+def generateFiles(teamScoreList, categoryString):
+    folderPath = ""
+    folderPath = PATH + '/' + shared.getCompetitionName() + '/' + '/'.join(categoryString.split('_'))
+    
     keyList = teamScoreList[0].keys()
     keySet = set()
     fileNameList = []
@@ -95,9 +107,6 @@ def generateFiles(teamScoreList):
     for file in fileNameList:
         populateWorkoutResults(folderPath, teamScoreList, file)
     populateGeneralResults(folderPath, teamScoreList)
-
-def displayResults(teamScoreList):
-    generateFiles(teamScoreList)
     
 def generateCategoryFolders():
     categoryList, secondCategoryList = shared.getCategoriesForFolderCreation()
@@ -112,16 +121,31 @@ def generateCategoryFolders():
             for secondCategory in secondCategoryList:
                 if not os.path.exists(categoryPath + '/' + secondCategory):
                     os.mkdir(categoryPath + '/' + secondCategory)
+            if not os.path.exists(categoryPath + '/general'):
+                os.mkdir(categoryPath + '/general')
+
+
+def calculateWorkoutsHelper(workoutList, categoryString):
+    workoutDataList = []
+
+    for workout in workoutList:
+        workoutDictList = calculate_workout.calculateWorkout(workout + '.csv', categoryString)
+        workoutDataList.append({'workout': workout, 'results': workoutDictList, 'category': categoryString})
+
+    orderedTeamsListScore = calculateTeamsScore(workoutDataList, categoryString)
+
+    generateFiles(orderedTeamsListScore, categoryString)
 
 def calculateWorkouts():
     workoutList = shared.getAllWorkouts()
     generateCategoryFolders()
+    firstCategoryList, secondCategoryList = shared.getCategoriesForFolderCreation()
 
-    workoutDataList = []
-
-    for workout in workoutList:
-        workoutDictList = calculate_workout.calculateWorkout(workout + '.csv')
-        workoutDataList.append({'workout': workout, 'results': workoutDictList})
-
-    orderedTeamsListScore = calculateTeamsScore(workoutDataList)
-    displayResults(orderedTeamsListScore)
+    for firstCategory in firstCategoryList:
+        if len(secondCategoryList) > 0:
+            for secondCategory in secondCategoryList:
+                categoryString = firstCategory + '_' + secondCategory
+                calculateWorkoutsHelper(workoutList, categoryString)
+            calculateWorkoutsHelper(workoutList, firstCategory + '_' + 'general')
+        else:
+            calculateWorkoutsHelper(workoutList, firstCategory)

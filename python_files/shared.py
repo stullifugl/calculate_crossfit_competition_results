@@ -1,6 +1,6 @@
 import csv
 
-FILEFOLDER = 'workouts/'
+FILEFOLDER = 'settings'
 
 NONTEAMFIELDS = ['_', 'Nafn']
 TEAMFIELDS = ['_', 'Nafn1', 'Nafn2', 'NafnLids']
@@ -13,7 +13,7 @@ def getDictKeys(reader):
 def readFile(fileName):
     lineList = []
 
-    for line in open(FILEFOLDER + fileName, 'r', encoding="utf8"):
+    for line in open(FILEFOLDER + '/' + fileName, 'r', encoding="utf8"):
         lineList.append(line)
 
     return lineList
@@ -126,3 +126,38 @@ def getAllWorkouts():
     fileNameList = getSettingInLineList('Workouts')
 
     return fileNameList
+
+def getTeamsCategories(teamDict, categories):
+    returnString = ""
+
+    for category in categories:
+        if teamDict[category].lower() == 'x':
+            if returnString == "":
+                returnString = category
+            else:
+                returnString = returnString + '_' + category
+
+    return returnString
+
+def getTeamsInCertainCategory(category):
+    if category == "":
+        return getDataFromFile('lidin.csv')
+
+    categoryList = getCategories()
+    teams = getDataFromFile('lidin.csv')
+    returnList = []
+    if 'general' in category:
+        updatedCategoryString = category.split('_')[0]
+
+        for team in teams:
+            if updatedCategoryString in getTeamsCategories(team, categoryList):
+                returnList.append(team)
+    else:
+        returnList = []
+
+        for team in teams:
+            if category == getTeamsCategories(team, categoryList):
+                returnList.append(team)
+
+    return returnList
+

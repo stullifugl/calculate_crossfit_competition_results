@@ -55,11 +55,7 @@ def createWorkoutFiles(fileNames):
 def addRandomDataToTeamFile(writer, fields):
     nrOfTeams = random.randint(30, 50)
     categories = shared.getCategories()
-    # print("categories: ", categories)
     firstCategoryList, secondCategorylist = shared.getCategoriesForFolderCreation()
-    # print("firstCategoryList: ", firstCategoryList)
-    # print("secondCategorylist: ", secondCategorylist)
-    # print("test: " + str(len(fields) - len(firstCategoryList) - len(secondCategorylist)))
 
     dict = {}
     for i in range(0, nrOfTeams):

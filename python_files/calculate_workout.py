@@ -2,9 +2,23 @@ import python_files.shared as shared
 import python_files.setup_workouts as setup_workouts
 import python_files.consts as consts
 
-
 def orderDictList(dictList, scoredByTime, fieldToOrderBy):
     return sorted(dictList, key=lambda x: x[fieldToOrderBy], reverse = not scoredByTime)
+
+def appendCategoriesToWorkoutDict(workoutDictList):
+    returnList = []
+
+    teamsData = shared.getDataFromFile('lidin.csv')
+    categories = shared.getCategories()
+
+    for workoutDict in workoutDictList:
+        for team in teamsData:
+            if team[shared.getWorkoutFieldToIndexFor()] == workoutDict[shared.getWorkoutFieldToIndexFor()]:
+                workoutDict['Categories'] = shared.getTeamsCategories(team, categories)
+                break
+        returnList.append(workoutDict)
+
+    return returnList
 
 def calculateScoreCount(dictList, sortedScoreSet):
     returnList = []
@@ -73,13 +87,34 @@ def addScoreToDict(dictList, pointsForScore):
 
     return dictList
 
-def calculateWorkout(fileName):
+def createWorkoutDictBasedOnCategory(workoutDictList, categoryString):
+    if categoryString == "":
+        return workoutDictList
+
+    returnList = []
+    
+    if 'general' in categoryString.lower():
+        for workoutDict in workoutDictList:
+            updatedCategoryString = categoryString.split('_')[0]
+            if updatedCategoryString in workoutDict['Categories']:
+                returnList.append(workoutDict)
+
+    for workoutDict in workoutDictList:
+        if workoutDict['Categories'] == categoryString:
+            returnList.append(workoutDict)
+
+    return returnList
+    
+
+def calculateWorkout(fileName, categoryString):
     scoredByTime = setup_workouts.getWorkoutSetting(fileName.replace('.csv', ''), 'ScoredByTime') == 'True'
 
     workoutData = shared.getDataFromFile(fileName)
-    workoutDict = orderDictList(workoutData, scoredByTime, 'Skor')
+    workoutDictList = orderDictList(workoutData, scoredByTime, 'Skor')
+    workoutDictList = appendCategoriesToWorkoutDict(workoutDictList)
+    workoutDictList = createWorkoutDictBasedOnCategory(workoutDictList, categoryString)
 
-    pointsForScore = calculateScorePoints(workoutDict, scoredByTime)
-    workoutDict = addScoreToDict(workoutDict, pointsForScore)
+    pointsForScore = calculateScorePoints(workoutDictList, scoredByTime)
+    workoutDictList = addScoreToDict(workoutDictList, pointsForScore)
 
-    return workoutDict
+    return workoutDictList
