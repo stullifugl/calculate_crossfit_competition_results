@@ -18,10 +18,10 @@ def readFile(fileName):
 
     return lineList
 
-def getDataFromFile(fileName):
+def getDataFromFile(fileName, folderName = "competitions"):
     returnList = []
 
-    with open('results/' + getCompetitionName() + '/' + fileName, newline='', encoding='utf-8') as csvfile:
+    with open(folderName + '/' + getCompetitionName() + '/' + fileName, newline='', encoding='utf-8') as csvfile:
         reader = csv.reader(csvfile, delimiter=',')
         dictKeys = getDictKeys(reader)
         for row in reader:
@@ -74,6 +74,16 @@ def getCategories():
     
     return categories
 
+def getCategoriesForFolderCreation():
+    competitionSettings = getSettingInLineList('CompetitionSettings')
+    categories = getSettingInLineList('CompetitionCategories', competitionSettings)
+    teamCompetition = isTeamCompetition()
+
+    if teamCompetition:
+        return categories, EXTRATEAMFIELDS
+    
+    return categories, []
+
 def getTeamFields():
     teamCompetition = isTeamCompetition()
     categoryList = getCategories()
@@ -111,3 +121,8 @@ def getWorkoutFieldToIndexFor():
         return 'NafnLids'
     else:
         return 'Nafn'
+
+def getAllWorkouts():
+    fileNameList = getSettingInLineList('Workouts')
+
+    return fileNameList

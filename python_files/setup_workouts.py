@@ -4,7 +4,7 @@ import python_files.consts as consts
 import random
 import os
 
-PATH = 'results'
+PATH = 'competitions'
 
 def appendZeroIfNeededToTime(number):
     if number < 10:
@@ -52,19 +52,23 @@ def createWorkoutFiles(fileNames):
             # Add all the teams to the workout files as well
             fillWorkoutsWithData(writer, name)
 
-def getAllWorkouts():
-    fileNameList = shared.getSettingInLineList('Workouts')
-
-    return fileNameList
-
 def addRandomDataToTeamFile(writer, fields):
     nrOfTeams = random.randint(30, 50)
     categories = shared.getCategories()
+    # print("categories: ", categories)
+    firstCategoryList, secondCategorylist = shared.getCategoriesForFolderCreation()
+    # print("firstCategoryList: ", firstCategoryList)
+    # print("secondCategorylist: ", secondCategorylist)
+    # print("test: " + str(len(fields) - len(firstCategoryList) - len(secondCategorylist)))
 
     dict = {}
     for i in range(0, nrOfTeams):
         dict = {}
-        randomCategory = random.randint(len(fields) - len(categories), len(fields) - 1)
+        firstRandomCategory = random.randint(len(fields) - len(categories), len(fields) - 1)
+        secondRandomCategory = -1
+        if len(secondCategorylist) > 0:
+            secondRandomCategory = random.randint(len(fields) - len(secondCategorylist), len(fields) - 1)
+            firstRandomCategory = random.randint(len(fields) - len(secondCategorylist) - len(firstCategoryList), len(fields) - len(secondCategorylist) - 1)
         for x in range(0, len(fields)):
             if '_' in fields[x]:
                 dict[fields[x]] = '_'
@@ -74,7 +78,7 @@ def addRandomDataToTeamFile(writer, fields):
                 else:
                     dict[fields[x]] = fields[x] + str(i)
             else:
-                if x == randomCategory:
+                if x == firstRandomCategory or x == secondRandomCategory:
                     dict[fields[x]] = 'x'
                 else:
                     dict[fields[x]] = ''
@@ -99,7 +103,7 @@ def createCompetitionFolder():
     createTeamFile(PATH + '/' + competitionName + '/lidin.csv')
 
 def setupWorkouts():
-    fileNameList = getAllWorkouts()
+    fileNameList = shared.getAllWorkouts()
     createCompetitionFolder()
     createWorkoutFiles(fileNameList)
 

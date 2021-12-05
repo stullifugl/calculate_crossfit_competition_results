@@ -2,6 +2,9 @@ import python_files.calculate_workout as calculate_workout
 import python_files.shared as shared
 import python_files.setup_workouts as setup_workouts
 import csv
+import os
+
+PATH = 'results'
 
 def getDataFromWorkoutForTeam(team, workoutDictList):
     for dict in workoutDictList:
@@ -70,7 +73,6 @@ def populateWorkoutResults(folderPath, teamScoreList, file):
 def populateGeneralResults(folderPath, teamScoreList):
     with open(folderPath + '/total.csv', 'w', encoding='UTF8', newline='') as f:
         keyList = teamScoreList[0].keys()
-        
         writer = csv.DictWriter(f, fieldnames=keyList)
         writer.writeheader()
         for dict in generateTotalDataListDict(teamScoreList):
@@ -78,7 +80,7 @@ def populateGeneralResults(folderPath, teamScoreList):
 
 
 def generateFiles(teamScoreList):
-    folderPath = 'results/general'
+    folderPath = PATH + '/' + shared.getCompetitionName()
     keyList = teamScoreList[0].keys()
     keySet = set()
     fileNameList = []
@@ -95,12 +97,25 @@ def generateFiles(teamScoreList):
     populateGeneralResults(folderPath, teamScoreList)
 
 def displayResults(teamScoreList):
-    # shared.debugDictList(teamScoreList)
     generateFiles(teamScoreList)
     
+def generateCategoryFolders():
+    categoryList, secondCategoryList = shared.getCategoriesForFolderCreation()
+    competitionName = shared.getCompetitionName()
+
+    for category in categoryList:
+        categoryPath = PATH + '/' + competitionName + '/' + category
+        if not os.path.exists(categoryPath):
+            os.mkdir(categoryPath)
+
+        if len(secondCategoryList) > 0:
+            for secondCategory in secondCategoryList:
+                if not os.path.exists(categoryPath + '/' + secondCategory):
+                    os.mkdir(categoryPath + '/' + secondCategory)
 
 def calculateWorkouts():
-    workoutList = setup_workouts.getAllWorkouts()
+    workoutList = shared.getAllWorkouts()
+    generateCategoryFolders()
 
     workoutDataList = []
 

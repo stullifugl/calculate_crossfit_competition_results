@@ -19,5 +19,6 @@ def main():
     #     calculate_results.calculateWorkouts()
 
     setup_workouts.setupWorkouts()
+    # calculate_results.calculateWorkouts()
 
 main()
