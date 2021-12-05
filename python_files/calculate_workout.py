@@ -93,7 +93,7 @@ def createWorkoutDictBasedOnCategory(workoutDictList, categoryString):
 
     returnList = []
     
-    if 'general' in categoryString.lower():
+    if consts.GENERALGROUPNAME in categoryString.lower():
         for workoutDict in workoutDictList:
             updatedCategoryString = categoryString.split('_')[0]
             if updatedCategoryString in workoutDict['Categories']:

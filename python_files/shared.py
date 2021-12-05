@@ -1,4 +1,5 @@
 import csv
+import python_files.consts as consts
 
 FILEFOLDER = 'settings'
 
@@ -146,7 +147,7 @@ def getTeamsInCertainCategory(category):
     categoryList = getCategories()
     teams = getDataFromFile('lidin.csv')
     returnList = []
-    if 'general' in category:
+    if consts.GENERALGROUPNAME in category:
         updatedCategoryString = category.split('_')[0]
 
         for team in teams:

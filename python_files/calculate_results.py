@@ -1,6 +1,6 @@
 import python_files.calculate_workout as calculate_workout
 import python_files.shared as shared
-import python_files.setup_workouts as setup_workouts
+import python_files.consts as consts
 import csv
 import os
 
@@ -146,6 +146,6 @@ def calculateWorkouts():
             for secondCategory in secondCategoryList:
                 categoryString = firstCategory + '_' + secondCategory
                 calculateWorkoutsHelper(workoutList, categoryString)
-            calculateWorkoutsHelper(workoutList, firstCategory + '_' + 'general')
+            calculateWorkoutsHelper(workoutList, firstCategory + '_' + consts.GENERALGROUPNAME)
         else:
             calculateWorkoutsHelper(workoutList, firstCategory)
