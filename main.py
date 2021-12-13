@@ -20,7 +20,7 @@ def main():
 
     # setup_workouts.setupTeams()
 
-    setup_workouts.setupWorkouts()
+    # setup_workouts.setupWorkouts()
     calculate_results.calculateWorkouts()
 
 main()

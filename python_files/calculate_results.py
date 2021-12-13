@@ -79,6 +79,32 @@ def populateGeneralResults(folderPath, teamScoreList):
         for dict in generateTotalDataListDict(teamScoreList):
             writer.writerow(dict)
 
+def getTopThreeTeams(teamScoreList):
+    returnList = []
+
+    for i in range(0, 3):
+        if len(teamScoreList) > i:
+            data = teamScoreList[i]
+            dataStr = '\t' + str(i + 1) + ':  ' + data['NafnLids'] + ' - ' + str(data['total_points'])
+            returnList.append(dataStr)
+
+    return returnList
+
+def addTopTeamsToOverallFile(teamScoreList, categoryString):
+    competitionName = shared.getCompetitionName()
+    competitionPath = PATH + '/' + competitionName
+
+    topTeams = getTopThreeTeams(teamScoreList)
+    with open(competitionPath + '/' + consts.OVERALLFILENAME, "a+") as file:
+        file.write(categoryString.replace('_', ' -> '))
+        file.write('\n')
+        for teamStr in topTeams:
+            file.write(teamStr)
+            file.write('\n')
+        
+        file.write('\n')
+        file.write('\n')
+        
 
 def generateFiles(teamScoreList, categoryString):
     folderPath = ""
@@ -99,6 +125,7 @@ def generateFiles(teamScoreList, categoryString):
         for file in fileNameList:
             populateWorkoutResults(folderPath, teamScoreList, file)
         populateGeneralResults(folderPath, teamScoreList)
+        addTopTeamsToOverallFile(teamScoreList, categoryString)
     else:
         print("No competitors signed for the following category: " + categoryString)
     
@@ -117,7 +144,6 @@ def generateCategoryFolders():
                     os.mkdir(categoryPath + '/' + secondCategory)
             if not os.path.exists(categoryPath + '/general'):
                 os.mkdir(categoryPath + '/general')
-
 
 def calculateWorkoutsHelper(workoutList, categoryString):
     workoutDataList = []
@@ -142,17 +168,24 @@ def resetCompetitionFolder():
     if not os.path.exists(competitionPath):
         os.mkdir(competitionPath)
 
+def createOverallFile():
+    competitionName = shared.getCompetitionName()
+    competitionPath = PATH + '/' + competitionName
+
+    open(competitionPath + '/' + consts.OVERALLFILENAME, "w")
+
 def calculateWorkouts():
     resetCompetitionFolder()
+    createOverallFile()
     workoutList = shared.getAllWorkouts()
     generateCategoryFolders()
     firstCategoryList, secondCategoryList = shared.getCategoriesForFolderCreation()
 
     for firstCategory in firstCategoryList:
         if len(secondCategoryList) > 0:
+            calculateWorkoutsHelper(workoutList, firstCategory + '_' + consts.GENERALGROUPNAME)
             for secondCategory in secondCategoryList:
                 categoryString = firstCategory + '_' + secondCategory
                 calculateWorkoutsHelper(workoutList, categoryString)
-            calculateWorkoutsHelper(workoutList, firstCategory + '_' + consts.GENERALGROUPNAME)
         else:
             calculateWorkoutsHelper(workoutList, firstCategory)

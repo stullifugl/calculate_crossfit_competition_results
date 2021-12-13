@@ -6,3 +6,4 @@ SETUPWORKOUTS = True # Creates all the workout files and overrides any existing 
 ADDRANDOMSCORES = True # Adds random scores for testing purposes
 ADDRANDOMTEAMS = False # Adds random teams for testing purposes
 GENERALGROUPNAME = 'general'
+OVERALLFILENAME = 'overview.txt'
