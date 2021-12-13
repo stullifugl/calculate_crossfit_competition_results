@@ -1,50 +1,50 @@
-RX -> general
+RX -> general   (13 fjöldi liða)
 	1:  Kleinur - 265
 	2:  Endurance álfarnir - 250
 	3:  Flugfreyjurnar - 245
 
 
-RX -> KK-KK
+RX -> KK-KK   (7 fjöldi liða)
 	1:  Flugfreyjurnar - 280
 	2:  Festive bois - 275
 	3:  DILFS - 265
 
 
-RX -> KVK-KVK
+RX -> KVK-KVK   (2 fjöldi liða)
 	1:  Kleinur - 295
 	2:  slimpossible - 290
 
 
-RX -> KK-KVK
+RX -> KK-KVK   (4 fjöldi liða)
 	1:  Endurance álfarnir - 290
 	2:  Það eru ekki alltaf jólin - 285
 	3:  Team Model Fitness - 280
 
 
-SK1 -> general
+SK1 -> general   (4 fjöldi liða)
 	1:  BMB & LÞB - 285
 	2:  Alex Ferguson - 280
 	3:  Hung over redhead man og Diljá besta - 275
 
 
-SK1 -> KK-KK
+SK1 -> KK-KK   (1 fjöldi liða)
 	1:  Alex Ferguson - 300
 
 
-SK1 -> KVK-KVK
+SK1 -> KVK-KVK   (2 fjöldi liða)
 	1:  BMB & LÞB - 295
 	2:  Bollurnar - 290
 
 
-SK1 -> KK-KVK
+SK1 -> KK-KVK   (1 fjöldi liða)
 	1:  Hung over redhead man og Diljá besta - 300
 
 
-SK2 -> general
+SK2 -> general   (1 fjöldi liða)
 	1:  Þreyttir.is - 300
 
 
-SK2 -> KK-KK
+SK2 -> KK-KK   (1 fjöldi liða)
 	1:  Þreyttir.is - 300
 
 

@@ -96,7 +96,7 @@ def addTopTeamsToOverallFile(teamScoreList, categoryString):
 
     topTeams = getTopThreeTeams(teamScoreList)
     with open(competitionPath + '/' + consts.OVERALLFILENAME, "a+") as file:
-        file.write(categoryString.replace('_', ' -> '))
+        file.write(categoryString.replace('_', ' -> ') + '   (' + str(len(teamScoreList)) + ' fjöldi liða)')
         file.write('\n')
         for teamStr in topTeams:
             file.write(teamStr)
