@@ -87,7 +87,7 @@ def createTeamFile(path):
         writer = csv.DictWriter(f, fieldnames=fields)
         writer.writeheader()
 
-        if consts.ADDRANDOMSCORES:
+        if consts.ADDRANDOMTEAMS:
             addRandomDataToTeamFile(writer, fields)
 
 def createCompetitionFolder():
@@ -98,9 +98,11 @@ def createCompetitionFolder():
     
     createTeamFile(PATH + '/' + competitionName + '/lidin.csv')
 
+def setupTeams():
+    createCompetitionFolder()
+
 def setupWorkouts():
     fileNameList = shared.getAllWorkouts()
-    createCompetitionFolder()
     createWorkoutFiles(fileNameList)
 
     

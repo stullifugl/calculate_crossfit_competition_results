@@ -11,16 +11,6 @@ def getDataFromWorkoutForTeam(team, workoutDictList):
         if dict[shared.getWorkoutFieldToIndexFor()] == team[shared.getWorkoutFieldToIndexFor()]:
             return dict['Points'], dict['Skor']
 
-    print("team not found")
-    print(team)
-    print(workoutDictList)
-    print()
-    print()
-    print()
-    print()
-    print()
-    print()
-
     shared.logError("Could not find team in function getDataFromWorkoutForTeam")
     return 0.0
 
@@ -93,20 +83,23 @@ def generateFiles(teamScoreList, categoryString):
     folderPath = ""
     folderPath = PATH + '/' + shared.getCompetitionName() + '/' + '/'.join(categoryString.split('_'))
     
-    keyList = teamScoreList[0].keys()
-    keySet = set()
-    fileNameList = []
+    if teamScoreList:
+        keyList = teamScoreList[0].keys()
+        keySet = set()
+        fileNameList = []
 
-    for key in keyList:
-        if 'workout' in key:
-            str = key.replace('_points', '')
-            str = str.replace('_score', '')
-            keySet.add(str)
+        for key in keyList:
+            if 'workout' in key:
+                str = key.replace('_points', '')
+                str = str.replace('_score', '')
+                keySet.add(str)
 
-    fileNameList = list(keySet)
-    for file in fileNameList:
-        populateWorkoutResults(folderPath, teamScoreList, file)
-    populateGeneralResults(folderPath, teamScoreList)
+        fileNameList = list(keySet)
+        for file in fileNameList:
+            populateWorkoutResults(folderPath, teamScoreList, file)
+        populateGeneralResults(folderPath, teamScoreList)
+    else:
+        print("No competitors signed for the following category: " + categoryString)
     
 def generateCategoryFolders():
     categoryList, secondCategoryList = shared.getCategoriesForFolderCreation()
@@ -133,7 +126,6 @@ def calculateWorkoutsHelper(workoutList, categoryString):
         workoutDataList.append({'workout': workout, 'results': workoutDictList, 'category': categoryString})
 
     orderedTeamsListScore = calculateTeamsScore(workoutDataList, categoryString)
-
     generateFiles(orderedTeamsListScore, categoryString)
 
 def calculateWorkouts():

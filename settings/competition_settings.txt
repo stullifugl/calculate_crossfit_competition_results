@@ -17,7 +17,8 @@ The settings availabe for every competition are as follows
 ###CompetitionSettings
     ###CompetitionCategories
         RX
-        Scaled
+        SK1
+        SK2
     ###CompetitionCategories
 
     ###TeamCompetition
@@ -29,8 +30,6 @@ The settings availabe for every competition are as follows
     workout1
     workout2
     workout3
-    workout4
-    workout5
 ###Workouts
 
 
@@ -51,15 +50,3 @@ The settings availabe for every competition are as follows
         True
     ###ScoredByTime
 ###workout3
-
-###workout4
-    ###ScoredByTime
-        False
-    ###ScoredByTime
-###workout4
-
-###workout5
-    ###ScoredByTime
-        True
-    ###ScoredByTime
-###workout5
