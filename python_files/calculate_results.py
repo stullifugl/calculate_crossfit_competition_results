@@ -3,6 +3,7 @@ import python_files.shared as shared
 import python_files.consts as consts
 import csv
 import os
+import shutil
 
 PATH = 'results'
 
@@ -128,7 +129,21 @@ def calculateWorkoutsHelper(workoutList, categoryString):
     orderedTeamsListScore = calculateTeamsScore(workoutDataList, categoryString)
     generateFiles(orderedTeamsListScore, categoryString)
 
+def resetCompetitionFolder():
+    competitionName = shared.getCompetitionName()
+    competitionPath = PATH + '/' + competitionName
+
+    try:
+        if os.path.exists(competitionPath):
+            shutil.rmtree(competitionPath)
+    except OSError as e:
+        print("Error: %s - %s." % (e.filename, e.strerror))
+
+    if not os.path.exists(competitionPath):
+        os.mkdir(competitionPath)
+
 def calculateWorkouts():
+    resetCompetitionFolder()
     workoutList = shared.getAllWorkouts()
     generateCategoryFolders()
     firstCategoryList, secondCategoryList = shared.getCategoriesForFolderCreation()
