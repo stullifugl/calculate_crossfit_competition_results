@@ -1,11 +1,13 @@
 import python_files.calculate_workout as calculate_workout
 import python_files.shared as shared
 import python_files.consts as consts
+import python_files.setup_workouts as setup_workouts
 import csv
 import os
 import shutil
 
 PATH = 'results'
+SETUP_WORKOUTS_PATH = setup_workouts.PATH
 
 def getDataFromWorkoutForTeam(team, workoutDictList):
     for dict in workoutDictList:
@@ -127,7 +129,7 @@ def generateFiles(teamScoreList, categoryString):
         populateGeneralResults(folderPath, teamScoreList)
         addTopTeamsToOverallFile(teamScoreList, categoryString)
     else:
-        print("No competitors signed for the following category: " + categoryString)
+        print("No competitors assigned for the following category: " + categoryString)
     
 def generateCategoryFolders():
     categoryList, secondCategoryList = shared.getCategoriesForFolderCreation()
@@ -145,7 +147,7 @@ def generateCategoryFolders():
             if not os.path.exists(categoryPath + '/general'):
                 os.mkdir(categoryPath + '/general')
 
-def calculateWorkoutsHelper(workoutList, categoryString):
+def calculateWorkoutsHelper(workoutList: list, categoryString: str):
     workoutDataList = []
 
     for workout in workoutList:
@@ -174,7 +176,33 @@ def createOverallFile():
 
     open(competitionPath + '/' + consts.OVERALLFILENAME, "w")
 
+def checkIfWorkoutsCanBeCalculated():
+    competitonName = shared.getCompetitionName()
+
+    # Do the competitions file exist
+    if not os.path.exists(SETUP_WORKOUTS_PATH + '/' + competitonName):
+        print("The competition for " + competitonName + " has not been setup")
+        quit()
+
+    workoutList = shared.getAllWorkouts()
+    for workout in workoutList:
+        csvPath = workout + '.csv'
+        # Does the workout file exist
+        if not os.path.exists(SETUP_WORKOUTS_PATH + '/' + competitonName + '/' + csvPath):
+            print("The workout file for " + workout + " has not been setup")
+            quit()
+    
+        # Check if some score has not been filled out
+        workoutData = shared.getDataFromFile(csvPath)
+        for data in workoutData:
+            if data['Skor'] == '' or data['Skor'] == None:
+                print("Error found in " + workout)
+                print("Skor has not been added for team " + data['NafnLids'])
+                quit()
+
 def calculateWorkouts():
+    checkIfWorkoutsCanBeCalculated()
+
     resetCompetitionFolder()
     createOverallFile()
     workoutList = shared.getAllWorkouts()

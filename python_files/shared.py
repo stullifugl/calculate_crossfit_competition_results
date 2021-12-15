@@ -28,7 +28,7 @@ def getDataFromFile(fileName, folderName = "competitions"):
         for row in reader:
             dict = {}
             for i in range(1, len(row)):
-                if dictKeys[i - 1] == 'Skor':
+                if dictKeys[i - 1] == 'Skor' and row[i] != '':
                     newStr = row[i].replace(':', '.')
                     dict[dictKeys[i - 1]] = float(newStr)
                 else:
@@ -162,3 +162,5 @@ def getTeamsInCertainCategory(category):
 
     return returnList
 
+def getAllTeams():
+    return getDataFromFile('lidin.csv')
