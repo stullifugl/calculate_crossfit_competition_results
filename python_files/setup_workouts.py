@@ -99,7 +99,7 @@ def updateTeamFile(lineList: list) -> None:
         writer = csv.DictWriter(f, fieldnames=fields)
         writer.writeheader()
 
-        for x in range(0, len(lineList)):
+        for x in range(1, len(lineList)):
             dict = {}
             list = lineList[x].split(',')
             for z in range(0, len(fields)):
