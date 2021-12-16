@@ -2,10 +2,10 @@ import python_files.shared as shared
 import python_files.setup_workouts as setup_workouts
 import python_files.consts as consts
 
-def orderDictList(dictList, scoredByTime, fieldToOrderBy):
+def orderDictList(dictList: list, scoredByTime: bool, fieldToOrderBy: str) -> list:
     return sorted(dictList, key=lambda x: x[fieldToOrderBy], reverse = not scoredByTime)
 
-def appendCategoriesToWorkoutDict(workoutDictList):
+def appendCategoriesToWorkoutDict(workoutDictList: list) -> list:
     returnList = []
 
     teamsData = shared.getDataFromFile('lidin.csv')
@@ -20,7 +20,7 @@ def appendCategoriesToWorkoutDict(workoutDictList):
 
     return returnList
 
-def calculateScoreCount(dictList, sortedScoreSet):
+def calculateScoreCount(dictList: list, sortedScoreSet: list):
     returnList = []
 
     for score in sortedScoreSet:
@@ -36,7 +36,7 @@ def calculateScoreCount(dictList, sortedScoreSet):
 
     return returnList
 
-def calculateScorePointsHelper(score, calculatedScoreCounts):
+def calculateScorePointsHelper(score: float, calculatedScoreCounts: list) -> (float | int):
     count = 0
     for calculatedScore in calculatedScoreCounts:
         if calculatedScore['Skor'] == score:
@@ -50,11 +50,7 @@ def calculateScorePointsHelper(score, calculatedScoreCounts):
 
     return 0.0
 
-def convertPoint(point, scoredByTime):
-    if scoredByTime:
-        return point
-
-def calculateScorePoints(dictList, scoredByTime):
+def calculateScorePoints(dictList: list, scoredByTime: bool) -> None:
     returnList = []
     scoreSet = set()
 
@@ -73,7 +69,7 @@ def calculateScorePoints(dictList, scoredByTime):
 
     return returnList
 
-def findPointsForScore(score, pointForScore):
+def findPointsForScore(score: float, pointForScore: list) -> float:
     for point in pointForScore:
         if (point['Skor'] == score):
             return point['Points']
@@ -81,13 +77,13 @@ def findPointsForScore(score, pointForScore):
     shared.logError("Could not find findPointsForScore")
     return 0.0
 
-def addScoreToDict(dictList, pointsForScore):
+def addScoreToDict(dictList: list, pointsForScore: list) -> list:
     for dict in dictList:
         dict['Points'] = findPointsForScore(dict['Skor'], pointsForScore)
 
     return dictList
 
-def createWorkoutDictBasedOnCategory(workoutDictList, categoryString):
+def createWorkoutDictBasedOnCategory(workoutDictList: list, categoryString: str) -> list:
     if categoryString == "":
         return workoutDictList
 
@@ -106,7 +102,7 @@ def createWorkoutDictBasedOnCategory(workoutDictList, categoryString):
     return returnList
     
 
-def calculateWorkout(fileName, categoryString):
+def calculateWorkout(fileName: str, categoryString: str) -> list:
     scoredByTime = setup_workouts.getWorkoutSetting(fileName.replace('.csv', ''), 'ScoredByTime') == 'True'
 
     workoutData = shared.getDataFromFile(fileName)

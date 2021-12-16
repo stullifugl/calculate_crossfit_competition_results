@@ -1,49 +1,49 @@
-RX -> general   (21 liğ)
-	1:  Team Ginger - 285
-	2:  Flugfreyjurnar - 210
-	3:  Ung og efnileg - 210
+RX -> general   (22 liğ)
+	1:  slimpossible - 245
+	2:  if it ain't broke don't fix it - 220
+	3:  Beygja og Bekkur - 220
 
 
 RX -> KK-KK   (10 liğ)
-	1:  Team Ginger - 285
-	2:  Flugfreyjurnar - 255
-	3:  Stağan? - 240
+	1:  Beygja og Bekkur - 280
+	2:  if it ain't broke don't fix it - 260
+	3:  Flugfreyjurnar - 260
 
 
 RX -> KVK-KVK   (6 liğ)
-	1:  Fjallageitur - 280
-	2:  slimpossible - 270
-	3:  Double trouble - 265
+	1:  slimpossible - 290
+	2:  Fjallageitur - 275
+	3:  AA - 265
 
 
-RX -> KK-KVK   (5 liğ)
-	1:  Ung og efnileg - 290
-	2:  Şağ eru ekki alltaf jólin - 285
-	3:  Team Model Fitness - 280
+RX -> KK-KVK   (6 liğ)
+	1:  Berlínarbollurnar - 270
+	2:  Ung og efnileg - 270
+	3:  Einar & Ingibjörg - 265
 
 
-SK1 -> general   (11 liğ)
-	1:  Chubby No More's - 280
-	2:  Endurance álfarnir - 250
-	3:  BMB & LŞB - 245
+SK1 -> general   (10 liğ)
+	1:  K og H - 260
+	2:  Bollurnar - 255
+	3:  Chubby No More's - 250
 
 
 SK1 -> KK-KK   (3 liğ)
 	1:  Alex Ferguson - 290
-	2:  Team Awesome - 285
-	3:  Villikettirnir - 280
+	2:  Villikettirnir - 285
+	3:  Team Awesome - 280
 
 
 SK1 -> KVK-KVK   (4 liğ)
-	1:  BMB & LŞB - 285
-	2:  Chubby No More's - 285
+	1:  Bollurnar - 285
+	2:  Chubby No More's - 280
 	3:  Milfs - 275
 
 
-SK1 -> KK-KVK   (4 liğ)
-	1:  Endurance álfarnir - 295
-	2:  K og H - 280
-	3:  Actuar bandiğ - 270
+SK1 -> KK-KVK   (3 liğ)
+	1:  K og H - 300
+	2:  Actuar bandiğ - 280
+	3:  Hung over redhead man og Diljá besta - 275
 
 
 SK2 -> general   (1 liğ)

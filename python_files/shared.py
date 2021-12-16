@@ -11,7 +11,7 @@ def getDictKeys(reader):
     headerLine = next(reader)
     return headerLine[1:]
 
-def readFile(fileName, fileFolder = 'settings'):
+def readFile(fileName: str, fileFolder: str = 'settings') -> list:
     lineList = []
 
     for line in open(fileFolder + '/' + fileName, 'r', encoding="utf8"):
@@ -19,7 +19,7 @@ def readFile(fileName, fileFolder = 'settings'):
 
     return lineList
 
-def getDataFromFile(fileName, folderName = "competitions"):
+def getDataFromFile(fileName: str, folderName: str = "competitions") -> list:
     returnList = []
 
     with open(folderName + '/' + getCompetitionName() + '/' + fileName, newline='', encoding='utf-8') as csvfile:
@@ -37,14 +37,14 @@ def getDataFromFile(fileName, folderName = "competitions"):
 
     return returnList
 
-def logError(error):
+def logError(error: str) -> None:
     print("Error ____ " + error + " _____")
 
-def debugDictList(dictList):
+def debugDictList(dictList: list) -> None:
     for item in dictList:
         print(item)
 
-def getSettingInLineList(setting, lineList = readFile('competition_settings.txt')):
+def getSettingInLineList(setting: str, lineList: list = readFile('competition_settings.txt')) -> list:
     returnList = []
 
     foundSettingInitializer = False
@@ -61,12 +61,12 @@ def getSettingInLineList(setting, lineList = readFile('competition_settings.txt'
 
     return returnList
 
-def isTeamCompetition():
+def isTeamCompetition() -> bool:
     competitionSettings = getSettingInLineList('CompetitionSettings')
 
     return getSettingInLineList('TeamCompetition', competitionSettings)[0] == 'True'
 
-def getCategories():
+def getCategories() -> list:
     competitionSettings = getSettingInLineList('CompetitionSettings')
     teamCompetition = isTeamCompetition()
     categories = getSettingInLineList('CompetitionCategories', competitionSettings)
@@ -75,7 +75,7 @@ def getCategories():
     
     return categories
 
-def getCategoriesForFolderCreation():
+def getCategoriesForFolderCreation() -> tuple:
     competitionSettings = getSettingInLineList('CompetitionSettings')
     categories = getSettingInLineList('CompetitionCategories', competitionSettings)
     teamCompetition = isTeamCompetition()
@@ -85,7 +85,7 @@ def getCategoriesForFolderCreation():
     
     return categories, []
 
-def getTeamFields():
+def getTeamFields() -> list:
     teamCompetition = isTeamCompetition()
     categoryList = getCategories()
     
@@ -100,35 +100,32 @@ def getTeamFields():
 
         return newList
 
-def getCompetitionName():
+def getCompetitionName() -> str:
     nameSettings = getSettingInLineList('CompetitionName')
 
     return nameSettings[0].replace(" ", "_")
 
-def getWorkouts():
+def getWorkouts() -> list:
     return getSettingInLineList('Workouts')
 
-def getWorkoutDetail(workout, setting):
-    return getSettingInLineList(workout, setting)[0] == 'True'
-
-def getWorkoutFields():
+def getWorkoutFields() -> list:
     if isTeamCompetition():
-        return ['_', 'NafnLids', 'Skor']
+        return ['_', getWorkoutFieldToIndexFor(), 'Skor']
     else:
         return ['_', 'Nafn', 'Skor']
 
-def getWorkoutFieldToIndexFor():
+def getWorkoutFieldToIndexFor() -> str:
     if isTeamCompetition():
         return 'NafnLids'
     else:
         return 'Nafn'
 
-def getAllWorkouts():
+def getAllWorkouts() -> list:
     fileNameList = getSettingInLineList('Workouts')
 
     return fileNameList
 
-def getTeamsCategories(teamDict, categories):
+def getTeamsCategories(teamDict: dict, categories: list) -> str:
     returnString = ""
 
     for category in categories:
@@ -140,7 +137,7 @@ def getTeamsCategories(teamDict, categories):
 
     return returnString
 
-def getTeamsInCertainCategory(category):
+def getTeamsInCertainCategory(category: str) -> list:
     if category == "":
         return getDataFromFile('lidin.csv')
 
@@ -162,5 +159,5 @@ def getTeamsInCertainCategory(category):
 
     return returnList
 
-def getAllTeams():
+def getAllTeams() -> list:
     return getDataFromFile('lidin.csv')

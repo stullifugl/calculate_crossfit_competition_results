@@ -6,13 +6,13 @@ import os
 
 PATH = 'competitions'
 
-def appendZeroIfNeededToTime(number):
+def appendZeroIfNeededToTime(number: int) -> str:
     if number < 10:
         return '0' + str(number)
 
     return str(number)
 
-def generateRandomScore(scoredByTime):
+def generateRandomScore(scoredByTime: bool) -> str:
     if scoredByTime == False:
         return str(random.randint(70, 150))
     else:
@@ -21,12 +21,12 @@ def generateRandomScore(scoredByTime):
 
         return randomNumberOne + ':' + randomNumberTwo
 
-def getWorkoutSetting(fileName, workoutSetting):
+def getWorkoutSetting(fileName: str, workoutSetting: str) -> str:
     workoutSettingsLines = shared.getSettingInLineList(fileName)
     
     return shared.getSettingInLineList(workoutSetting, workoutSettingsLines)[0]
 
-def fillWorkoutsWithData(writer, fileName):
+def fillWorkoutsWithData(writer, fileName: str) -> None:
     scoredByTime = False
     if consts.ADDRANDOMSCORES:
         scoredByTime = getWorkoutSetting(fileName, 'ScoredByTime') == 'True'
@@ -35,13 +35,13 @@ def fillWorkoutsWithData(writer, fileName):
     for team in teams:
         dict = {}
         if consts.ADDRANDOMSCORES:
-            dict={'_': '_', 'NafnLids': team['NafnLids'], 'Skor': generateRandomScore(scoredByTime)}
+            dict={'_': '_', shared.getWorkoutFieldToIndexFor(): team[shared.getWorkoutFieldToIndexFor()], 'Skor': generateRandomScore(scoredByTime)}
         else:
-            dict={'_': '_', 'NafnLids': team['NafnLids'], 'Skor': ''}
+            dict={'_': '_', shared.getWorkoutFieldToIndexFor(): team[shared.getWorkoutFieldToIndexFor()], 'Skor': ''}
         writer.writerow(dict)
 
 
-def createWorkoutFiles(fileNames):
+def createWorkoutFiles(fileNames: list) -> None:
     path = PATH + '/' + shared.getCompetitionName() + '/'
 
     for name in fileNames:
@@ -52,7 +52,7 @@ def createWorkoutFiles(fileNames):
             # Add all the teams to the workout files as well
             fillWorkoutsWithData(writer, name)
 
-def addRandomDataToTeamFile(writer, fields):
+def addRandomDataToTeamFile(writer, fields: list) -> None:
     nrOfTeams = random.randint(30, 50)
     categories = shared.getCategories()
     firstCategoryList, secondCategorylist = shared.getCategoriesForFolderCreation()
@@ -69,7 +69,7 @@ def addRandomDataToTeamFile(writer, fields):
             if '_' in fields[x]:
                 dict[fields[x]] = '_'
             elif 'Nafn' in fields[x]:
-                if fields[x] == 'NafnLids':
+                if fields[x] == shared.getWorkoutFieldToIndexFor():
                     dict[fields[x]] = 'Lid' + str(i)
                 else:
                     dict[fields[x]] = fields[x] + str(i)
@@ -80,7 +80,7 @@ def addRandomDataToTeamFile(writer, fields):
                     dict[fields[x]] = ''
         writer.writerow(dict)
 
-def createTeamFile(path):
+def createTeamFile(path: str) -> None:
     fields = shared.getTeamFields()
 
     with open(path, 'w', encoding='UTF8', newline='') as f:
@@ -90,7 +90,7 @@ def createTeamFile(path):
         if consts.ADDRANDOMTEAMS:
             addRandomDataToTeamFile(writer, fields)
 
-def updateTeamFile(lineList):
+def updateTeamFile(lineList: list) -> None:
     fields = shared.getTeamFields()
     competitionName = shared.getCompetitionName()
 
@@ -108,7 +108,7 @@ def updateTeamFile(lineList):
             writer.writerow(dict)
 
 
-def createCompetitionFolder():
+def createCompetitionFolder() -> None:
     competitionName = shared.getCompetitionName()
     
     if not os.path.exists(PATH + '/' + competitionName):
@@ -116,10 +116,10 @@ def createCompetitionFolder():
     
     createTeamFile(PATH + '/' + competitionName + '/lidin.csv')
 
-def setupTeams():
+def setupTeams() -> None:
     createCompetitionFolder()
 
-def setupWorkouts():
+def setupWorkouts() -> None:
     fileNameList = shared.getAllWorkouts()
     createWorkoutFiles(fileNameList)
 

@@ -1,7 +1,7 @@
 import python_files.shared as shared
 import python_files.setup_workouts as setup_workouts
 
-def findTeams():
+def findTeams() -> list:
     returnList = []
 
     print()
@@ -10,7 +10,7 @@ def findTeams():
 
     indexNumber = 1
     for i in range(0, len(teamsData)):
-        name: str = teamsData[i]['NafnLids']
+        name: str = teamsData[i][shared.getWorkoutFieldToIndexFor()]
         if teamName.lower() in name.lower():
             returnList.append({
                 'num': indexNumber,
@@ -21,7 +21,7 @@ def findTeams():
 
     return returnList
 
-def checkIfIndexExists(teams: list, number: int):
+def checkIfIndexExists(teams: list, number: int) -> None:
     for team in teams:
         if team['num'] == number:
             return
@@ -29,7 +29,7 @@ def checkIfIndexExists(teams: list, number: int):
     print("Number inputted does not exist")
     quit()        
 
-def pickTeam(teams) -> dict:
+def pickTeam(teams: list) -> dict:
     print()
     print("Which team are you looking for")
     for team in teams:
@@ -55,7 +55,7 @@ def pickCategory() -> str:
 
     return categories[categoryIndex - 1]
 
-def overrideLineList(list, keys, category) -> list:
+def overrideLineList(list: list, keys: list, category: str) -> list:
     categories, _ = shared.getCategoriesForFolderCreation()
     indexes = []
     categoryIndex = -1
@@ -93,7 +93,7 @@ def overrideTeamDocument(team: dict, category: str) -> None:
     setup_workouts.updateTeamFile(fileLines)
 
 
-def changeTeams():
+def changeTeams() -> None:
     teams = findTeams()
 
     team = pickTeam(teams)

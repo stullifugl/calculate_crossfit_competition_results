@@ -9,15 +9,15 @@ import shutil
 PATH = 'results'
 SETUP_WORKOUTS_PATH = setup_workouts.PATH
 
-def getDataFromWorkoutForTeam(team, workoutDictList):
+def getDataFromWorkoutForTeam(team: dict, workoutDictList: list) -> tuple:
     for dict in workoutDictList:
         if dict[shared.getWorkoutFieldToIndexFor()] == team[shared.getWorkoutFieldToIndexFor()]:
             return dict['Points'], dict['Skor']
 
     shared.logError("Could not find team in function getDataFromWorkoutForTeam")
-    return 0.0
+    return 0.0, 0.0
 
-def calculateTeamsScore(workoutDataList, categoryString):
+def calculateTeamsScore(workoutDataList: list, categoryString: str) -> list:
     totalTeamScoreList = []
     teams = shared.getTeamsInCertainCategory(categoryString)
 
@@ -36,13 +36,13 @@ def calculateTeamsScore(workoutDataList, categoryString):
     
     return calculate_workout.orderDictList(totalTeamScoreList, False, 'total_points')
 
-def generateWorkoutDataListDict(teamScoreList, file):
+def generateWorkoutDataListDict(teamScoreList: list, file: str) -> list:
     returnList = []
     orderedList = calculate_workout.orderDictList(teamScoreList, False, file + '_points')
 
     for team in orderedList:
         dict = {}
-        dict['NafnLids'] = team['NafnLids']
+        dict[shared.getWorkoutFieldToIndexFor()] = team[shared.getWorkoutFieldToIndexFor()]
         dict['Skor'] = team[file + '_score']
         dict['Stig'] = team[file + '_points']
 
@@ -50,7 +50,7 @@ def generateWorkoutDataListDict(teamScoreList, file):
 
     return returnList
 
-def generateTotalDataListDict(teamScoreList):
+def generateTotalDataListDict(teamScoreList: list) -> list:
     returnList = []
     orderedList = calculate_workout.orderDictList(teamScoreList, False, 'total_points')
     keyList = teamScoreList[0].keys()
@@ -64,16 +64,16 @@ def generateTotalDataListDict(teamScoreList):
 
     return returnList
 
-def populateWorkoutResults(folderPath, teamScoreList, file):
+def populateWorkoutResults(folderPath: str, teamScoreList: list, file: str) -> None:
     with open(folderPath + '/' + file + '.csv', 'w', encoding='UTF8', newline='') as f:
-        fieldList = ['NafnLids', 'Skor', 'Stig']
+        fieldList = [shared.getWorkoutFieldToIndexFor(), 'Skor', 'Stig']
 
         writer = csv.DictWriter(f, fieldnames=fieldList)
         writer.writeheader()
         for dict in generateWorkoutDataListDict(teamScoreList, file):
             writer.writerow(dict)
 
-def populateGeneralResults(folderPath, teamScoreList):
+def populateGeneralResults(folderPath: str, teamScoreList: list) -> None:
     with open(folderPath + '/total.csv', 'w', encoding='UTF8', newline='') as f:
         keyList = teamScoreList[0].keys()
         writer = csv.DictWriter(f, fieldnames=keyList)
@@ -81,18 +81,18 @@ def populateGeneralResults(folderPath, teamScoreList):
         for dict in generateTotalDataListDict(teamScoreList):
             writer.writerow(dict)
 
-def getTopThreeTeams(teamScoreList):
+def getTopThreeTeams(teamScoreList: list) -> list:
     returnList = []
 
     for i in range(0, 3):
         if len(teamScoreList) > i:
             data = teamScoreList[i]
-            dataStr = '\t' + str(i + 1) + ':  ' + data['NafnLids'] + ' - ' + str(data['total_points'])
+            dataStr = '\t' + str(i + 1) + ':  ' + data[shared.getWorkoutFieldToIndexFor()] + ' - ' + str(data['total_points'])
             returnList.append(dataStr)
 
     return returnList
 
-def addTopTeamsToOverallFile(teamScoreList, categoryString):
+def addTopTeamsToOverallFile(teamScoreList: list, categoryString: str) -> None:
     competitionName = shared.getCompetitionName()
     competitionPath = PATH + '/' + competitionName
 
@@ -108,7 +108,7 @@ def addTopTeamsToOverallFile(teamScoreList, categoryString):
         file.write('\n')
         
 
-def generateFiles(teamScoreList, categoryString):
+def generateFiles(teamScoreList: list, categoryString: str) -> None:
     folderPath = ""
     folderPath = PATH + '/' + shared.getCompetitionName() + '/' + '/'.join(categoryString.split('_'))
     
@@ -131,7 +131,7 @@ def generateFiles(teamScoreList, categoryString):
     else:
         print("No competitors assigned for the following category: " + categoryString)
     
-def generateCategoryFolders():
+def generateCategoryFolders() -> None:
     categoryList, secondCategoryList = shared.getCategoriesForFolderCreation()
     competitionName = shared.getCompetitionName()
 
@@ -147,7 +147,7 @@ def generateCategoryFolders():
             if not os.path.exists(categoryPath + '/general'):
                 os.mkdir(categoryPath + '/general')
 
-def calculateWorkoutsHelper(workoutList: list, categoryString: str):
+def calculateWorkoutsHelper(workoutList: list, categoryString: str) -> None:
     workoutDataList = []
 
     for workout in workoutList:
@@ -157,7 +157,7 @@ def calculateWorkoutsHelper(workoutList: list, categoryString: str):
     orderedTeamsListScore = calculateTeamsScore(workoutDataList, categoryString)
     generateFiles(orderedTeamsListScore, categoryString)
 
-def resetCompetitionFolder():
+def resetCompetitionFolder() -> None:
     competitionName = shared.getCompetitionName()
     competitionPath = PATH + '/' + competitionName
 
@@ -170,13 +170,13 @@ def resetCompetitionFolder():
     if not os.path.exists(competitionPath):
         os.mkdir(competitionPath)
 
-def createOverallFile():
+def createOverallFile() -> None:
     competitionName = shared.getCompetitionName()
     competitionPath = PATH + '/' + competitionName
 
     open(competitionPath + '/' + consts.OVERALLFILENAME, "w")
 
-def checkIfWorkoutsCanBeCalculated():
+def checkIfWorkoutsCanBeCalculated() -> None:
     competitonName = shared.getCompetitionName()
 
     # Do the competitions file exist
@@ -197,10 +197,10 @@ def checkIfWorkoutsCanBeCalculated():
         for data in workoutData:
             if data['Skor'] == '' or data['Skor'] == None:
                 print("Error found in " + workout)
-                print("Skor has not been added for team " + data['NafnLids'])
+                print("Skor has not been added for team " + data[shared.getWorkoutFieldToIndexFor()])
                 quit()
 
-def calculateWorkouts():
+def calculateWorkouts() -> None:
     checkIfWorkoutsCanBeCalculated()
 
     resetCompetitionFolder()
