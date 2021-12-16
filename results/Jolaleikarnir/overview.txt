@@ -1,50 +1,58 @@
-RX -> general   (13 liÃ°)
-	1:  Kleinur - 265
-	2:  Endurance Ã¡lfarnir - 250
-	3:  ÃžaÃ° eru ekki alltaf jÃ³lin - 235
+RX -> general   (22 lið)
+	1:  Crusier Kings - 255
+	2:  Fjallageitur - 225
+	3:  Team Ginger - 205
 
 
-RX -> KK-KK   (7 liÃ°)
-	1:  Festive bois - 275
-	2:  Flugfreyjurnar - 270
-	3:  DILFS - 265
+RX -> KK-KK   (10 lið)
+	1:  Crusier Kings - 290
+	2:  Staðan? - 245
+	3:  Team Ginger - 245
 
 
-RX -> KVK-KVK   (2 liÃ°)
-	1:  Kleinur - 295
-	2:  slimpossible - 290
+RX -> KVK-KVK   (6 lið)
+	1:  Fjallageitur - 285
+	2:  Kleinur - 275
+	3:  Hrundskin - 270
 
 
-RX -> KK-KVK   (4 liÃ°)
-	1:  Endurance Ã¡lfarnir - 290
-	2:  ÃžaÃ° eru ekki alltaf jÃ³lin - 285
-	3:  Team Model Fitness - 280
+RX -> KK-KVK   (6 lið)
+	1:  Ung og efnileg - 290
+	2:  Það eru ekki alltaf jólin - 270
+	3:  Einar & Ingibjörg - 260
 
 
-SK1 -> general   (4 liÃ°)
-	1:  BMB & LÃžB - 285
-	2:  Alex Ferguson - 280
-	3:  Hung over redhead man og DiljÃ¡ besta - 275
+SK1 -> general   (10 lið)
+	1:  Team Awesome - 285
+	2:  Hung over redhead man og Diljá besta - 240
+	3:  Bollurnar - 240
 
 
-SK1 -> KK-KK   (1 liÃ°)
-	1:  Alex Ferguson - 300
+SK1 -> KK-KK   (3 lið)
+	1:  Team Awesome - 300
+	2:  Villikettirnir - 280
+	3:  Alex Ferguson - 275
 
 
-SK1 -> KVK-KVK   (2 liÃ°)
-	1:  BMB & LÃžB - 295
-	2:  Bollurnar - 290
+SK1 -> KVK-KVK   (4 lið)
+	1:  Chubby No More's - 285
+	2:  Bollurnar - 280
+	3:  Milfs - 275
 
 
-SK1 -> KK-KVK   (1 liÃ°)
-	1:  Hung over redhead man og DiljÃ¡ besta - 300
+SK1 -> KK-KVK   (3 lið)
+	1:  Hung over redhead man og Diljá besta - 285
+	2:  Actuar bandið - 285
+	3:  K og H - 285
 
 
-SK2 -> general   (1 liÃ°)
-	1:  Ãžreyttir.is - 300
+SK2 -> general   (2 lið)
+	1:  Lexi og Simmi - 295
+	2:  Þreyttir.is - 290
 
 
-SK2 -> KK-KK   (1 liÃ°)
-	1:  Ãžreyttir.is - 300
+SK2 -> KK-KK   (2 lið)
+	1:  Lexi og Simmi - 295
+	2:  Þreyttir.is - 290
 
 
