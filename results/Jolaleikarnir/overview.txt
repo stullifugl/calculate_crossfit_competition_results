@@ -1,58 +1,56 @@
 RX -> general   (22 lið)
-	1:  Crusier Kings - 255
-	2:  Fjallageitur - 225
-	3:  Team Ginger - 205
+	1:  Team Ginger - 280
+	2:  Flugfreyjurnar - 205
+	3:  Ung og efnileg - 205
 
 
 RX -> KK-KK   (10 lið)
-	1:  Crusier Kings - 290
-	2:  Staðan? - 245
-	3:  Team Ginger - 245
+	1:  Team Ginger - 285
+	2:  Flugfreyjurnar - 255
+	3:  Staðan? - 240
 
 
 RX -> KVK-KVK   (6 lið)
-	1:  Fjallageitur - 285
-	2:  Kleinur - 275
-	3:  Hrundskin - 270
+	1:  Fjallageitur - 280
+	2:  slimpossible - 270
+	3:  Double trouble - 265
 
 
 RX -> KK-KVK   (6 lið)
-	1:  Ung og efnileg - 290
-	2:  Það eru ekki alltaf jólin - 270
-	3:  Einar & Ingibjörg - 260
+	1:  Ung og efnileg - 285
+	2:  Það eru ekki alltaf jólin - 275
+	3:  Endurance álfarnir - 275
 
 
-SK1 -> general   (10 lið)
-	1:  Team Awesome - 285
-	2:  Hung over redhead man og Diljá besta - 240
-	3:  Bollurnar - 240
+SK1 -> general   (11 lið)
+	1:  Chubby No More's - 280
+	2:  BMB & LÞB - 245
+	3:  Bollurnar - 245
 
 
-SK1 -> KK-KK   (3 lið)
-	1:  Team Awesome - 300
-	2:  Villikettirnir - 280
-	3:  Alex Ferguson - 275
+SK1 -> KK-KK   (4 lið)
+	1:  Þreyttir.is - 280
+	2:  Alex Ferguson - 280
+	3:  Team Awesome - 280
 
 
 SK1 -> KVK-KVK   (4 lið)
-	1:  Chubby No More's - 285
-	2:  Bollurnar - 280
+	1:  BMB & LÞB - 285
+	2:  Chubby No More's - 285
 	3:  Milfs - 275
 
 
 SK1 -> KK-KVK   (3 lið)
-	1:  Hung over redhead man og Diljá besta - 285
+	1:  K og H - 290
 	2:  Actuar bandið - 285
-	3:  K og H - 285
+	3:  Hung over redhead man og Diljá besta - 280
 
 
-SK2 -> general   (2 lið)
-	1:  Lexi og Simmi - 295
-	2:  Þreyttir.is - 290
+SK2 -> general   (1 lið)
+	1:  Lexi og Simmi - 300
 
 
-SK2 -> KK-KK   (2 lið)
-	1:  Lexi og Simmi - 295
-	2:  Þreyttir.is - 290
+SK2 -> KK-KK   (1 lið)
+	1:  Lexi og Simmi - 300
 
 
