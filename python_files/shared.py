@@ -11,10 +11,10 @@ def getDictKeys(reader):
     headerLine = next(reader)
     return headerLine[1:]
 
-def readFile(fileName):
+def readFile(fileName, fileFolder = 'settings'):
     lineList = []
 
-    for line in open(FILEFOLDER + '/' + fileName, 'r', encoding="utf8"):
+    for line in open(fileFolder + '/' + fileName, 'r', encoding="utf8"):
         lineList.append(line)
 
     return lineList

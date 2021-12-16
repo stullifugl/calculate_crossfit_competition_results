@@ -1,7 +1,7 @@
-RX -> general   (22 liğ)
-	1:  Team Ginger - 280
-	2:  Flugfreyjurnar - 205
-	3:  Ung og efnileg - 205
+RX -> general   (21 liğ)
+	1:  Team Ginger - 285
+	2:  Flugfreyjurnar - 210
+	3:  Ung og efnileg - 210
 
 
 RX -> KK-KK   (10 liğ)
@@ -16,22 +16,22 @@ RX -> KVK-KVK   (6 liğ)
 	3:  Double trouble - 265
 
 
-RX -> KK-KVK   (6 liğ)
-	1:  Ung og efnileg - 285
-	2:  Şağ eru ekki alltaf jólin - 275
-	3:  Endurance álfarnir - 275
+RX -> KK-KVK   (5 liğ)
+	1:  Ung og efnileg - 290
+	2:  Şağ eru ekki alltaf jólin - 285
+	3:  Team Model Fitness - 280
 
 
 SK1 -> general   (11 liğ)
 	1:  Chubby No More's - 280
-	2:  BMB & LŞB - 245
-	3:  Bollurnar - 245
+	2:  Endurance álfarnir - 250
+	3:  BMB & LŞB - 245
 
 
-SK1 -> KK-KK   (4 liğ)
-	1:  Şreyttir.is - 280
-	2:  Alex Ferguson - 280
-	3:  Team Awesome - 280
+SK1 -> KK-KK   (3 liğ)
+	1:  Alex Ferguson - 290
+	2:  Team Awesome - 285
+	3:  Villikettirnir - 280
 
 
 SK1 -> KVK-KVK   (4 liğ)
@@ -40,10 +40,10 @@ SK1 -> KVK-KVK   (4 liğ)
 	3:  Milfs - 275
 
 
-SK1 -> KK-KVK   (3 liğ)
-	1:  K og H - 290
-	2:  Actuar bandiğ - 285
-	3:  Hung over redhead man og Diljá besta - 280
+SK1 -> KK-KVK   (4 liğ)
+	1:  Endurance álfarnir - 295
+	2:  K og H - 280
+	3:  Actuar bandiğ - 270
 
 
 SK2 -> general   (1 liğ)

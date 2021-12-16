@@ -90,6 +90,24 @@ def createTeamFile(path):
         if consts.ADDRANDOMTEAMS:
             addRandomDataToTeamFile(writer, fields)
 
+def updateTeamFile(lineList):
+    fields = shared.getTeamFields()
+    competitionName = shared.getCompetitionName()
+
+    path = PATH + '/' + competitionName + '/lidin.csv'
+    with open(path, 'w', encoding='UTF8', newline='') as f:
+        writer = csv.DictWriter(f, fieldnames=fields)
+        writer.writeheader()
+
+        for x in range(0, len(lineList)):
+            dict = {}
+            list = lineList[x].split(',')
+            for z in range(0, len(fields)):
+                dict[fields[z]] = list[z].replace('\n', '')
+
+            writer.writerow(dict)
+
+
 def createCompetitionFolder():
     competitionName = shared.getCompetitionName()
     
