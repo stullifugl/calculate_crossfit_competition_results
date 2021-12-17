@@ -35,7 +35,7 @@ The settings availabe for every competition are as follows
 
 ###workout1
     ###ScoredByTime
-        True
+        False
     ###ScoredByTime
 ###workout1
 

@@ -17,7 +17,7 @@ def main():
         else:
             if consts.ADDRANDOMSCORES:
                 print("Random scores will be added to the workouts")
-            setup_workouts.setupWorkouts()
+            # setup_workouts.setupWorkouts()
 
     if val == '2':
         calculate_results.calculateWorkouts()

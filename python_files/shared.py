@@ -29,6 +29,7 @@ def getDataFromFile(fileName: str, folderName: str = "competitions") -> list:
             dict = {}
             for i in range(1, len(row)):
                 if dictKeys[i - 1] == 'Skor' and row[i] != '':
+                    
                     newStr = row[i].replace(':', '.')
                     dict[dictKeys[i - 1]] = float(newStr)
                 else:
