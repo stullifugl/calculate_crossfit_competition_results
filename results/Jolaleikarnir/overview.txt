@@ -1,56 +1,56 @@
-RX -> general   (22 li)
-	1:  slimpossible - 245
-	2:  if it ain't broke don't fix it - 220
-	3:  Beygja og Bekkur - 220
+RX -> general   (22 li√∞)
+	1:  √ûa√∞ eru ekki alltaf j√≥lin - 275
+	2:  Beygja og Bekkur - 210
+	3:  Team Model Fitness - 190
 
 
-RX -> KK-KK   (10 li)
-	1:  Beygja og Bekkur - 280
-	2:  if it ain't broke don't fix it - 260
-	3:  Flugfreyjurnar - 260
+RX -> KK-KK   (10 li√∞)
+	1:  Flugfreyjurnar - 260
+	2:  Beygja og Bekkur - 260
+	3:  if it ain't broke don't fix it - 255
 
 
-RX -> KVK-KVK   (6 li)
-	1:  slimpossible - 290
-	2:  Fjallageitur - 275
-	3:  AA - 265
+RX -> KVK-KVK   (6 li√∞)
+	1:  Double trouble - 270
+	2:  Fjallageitur - 265
+	3:  Hrundskin - 265
 
 
-RX -> KK-KVK   (6 li)
-	1:  BerlÌnarbollurnar - 270
-	2:  Ung og efnileg - 270
-	3:  Einar & Ingibjˆrg - 265
+RX -> KK-KVK   (6 li√∞)
+	1:  √ûa√∞ eru ekki alltaf j√≥lin - 300
+	2:  Berl√≠narbollurnar - 270
+	3:  Team Model Fitness - 270
 
 
-SK1 -> general   (10 li)
-	1:  K og H - 260
-	2:  Bollurnar - 255
-	3:  Chubby No More's - 250
+SK1 -> general   (10 li√∞)
+	1:  Alex Ferguson - 265
+	2:  Bollurnar - 265
+	3:  Milfs - 255
 
 
-SK1 -> KK-KK   (3 li)
+SK1 -> KK-KK   (3 li√∞)
 	1:  Alex Ferguson - 290
-	2:  Villikettirnir - 285
-	3:  Team Awesome - 280
+	2:  Team Awesome - 285
+	3:  Villikettirnir - 280
 
 
-SK1 -> KVK-KVK   (4 li)
+SK1 -> KVK-KVK   (4 li√∞)
 	1:  Bollurnar - 285
-	2:  Chubby No More's - 280
-	3:  Milfs - 275
+	2:  Milfs - 285
+	3:  BMB & L√ûB - 270
 
 
-SK1 -> KK-KVK   (3 li)
-	1:  K og H - 300
-	2:  Actuar bandi - 280
-	3:  Hung over redhead man og Dilj· besta - 275
+SK1 -> KK-KVK   (3 li√∞)
+	1:  Actuar bandi√∞ - 295
+	2:  Hung over redhead man og Dilj√° besta - 280
+	3:  K og H - 280
 
 
-SK2 -> general   (1 li)
+SK2 -> general   (1 li√∞)
 	1:  Lexi og Simmi - 300
 
 
-SK2 -> KK-KK   (1 li)
+SK2 -> KK-KK   (1 li√∞)
 	1:  Lexi og Simmi - 300
 
 

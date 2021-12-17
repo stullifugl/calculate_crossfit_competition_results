@@ -36,7 +36,7 @@ def calculateScoreCount(dictList: list, sortedScoreSet: list):
 
     return returnList
 
-def calculateScorePointsHelper(score: float, calculatedScoreCounts: list) -> (float | int):
+def calculateScorePointsHelper(score: float, calculatedScoreCounts: list):
     count = 0
     for calculatedScore in calculatedScoreCounts:
         if calculatedScore['Skor'] == score:
