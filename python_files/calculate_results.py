@@ -14,7 +14,8 @@ def getDataFromWorkoutForTeam(team: dict, workoutDictList: list) -> tuple:
         if dict[shared.getWorkoutFieldToIndexFor()] == team[shared.getWorkoutFieldToIndexFor()]:
             return dict['Points'], dict['Skor']
 
-    shared.logError("Could not find team in function getDataFromWorkoutForTeam")
+    shared.logError("Could not find team in function getDataFromWorkoutForTeam" + ': ')
+    print(team)
     return 0.0, 0.0
 
 def calculateTeamsScore(workoutDataList: list, categoryString: str) -> list:

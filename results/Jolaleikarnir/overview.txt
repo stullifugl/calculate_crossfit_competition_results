@@ -1,49 +1,49 @@
-RX -> general   (22 lið)
-	1:  Það eru ekki alltaf jólin - 275
-	2:  Beygja og Bekkur - 210
-	3:  Team Model Fitness - 190
+RX -> general   (23 lið)
+	1:  Endurance álfarnir - 245
+	2:  AA - 225
+	3:  if it ain't broke don't fix it - 215
 
 
 RX -> KK-KK   (10 lið)
-	1:  Flugfreyjurnar - 260
-	2:  Beygja og Bekkur - 260
-	3:  if it ain't broke don't fix it - 255
+	1:  if it ain't broke don't fix it - 280
+	2:  DILFS - 260
+	3:  Festive bois - 250
 
 
 RX -> KVK-KVK   (6 lið)
-	1:  Double trouble - 270
-	2:  Fjallageitur - 265
-	3:  Hrundskin - 265
+	1:  AA - 275
+	2:  Hrundskin - 275
+	3:  Kleinur - 270
 
 
-RX -> KK-KVK   (6 lið)
-	1:  Það eru ekki alltaf jólin - 300
-	2:  Berlínarbollurnar - 270
-	3:  Team Model Fitness - 270
+RX -> KK-KVK   (7 lið)
+	1:  Endurance álfarnir - 285
+	2:  Einar & Ingibjörg - 270
+	3:  Team Model Fitness - 265
 
 
-SK1 -> general   (10 lið)
-	1:  Alex Ferguson - 265
-	2:  Bollurnar - 265
-	3:  Milfs - 255
+SK1 -> general   (14 lið)
+	1:  Alex Ferguson - 245
+	2:  Actuar bandið - 245
+	3:  Chubby No More's - 240
 
 
-SK1 -> KK-KK   (3 lið)
-	1:  Alex Ferguson - 290
-	2:  Team Awesome - 285
-	3:  Villikettirnir - 280
+SK1 -> KK-KK   (6 lið)
+	1:  Alex Ferguson - 280
+	2:  Villikettirnir - 275
+	3:  Aflið og heimskan - 270
 
 
-SK1 -> KVK-KVK   (4 lið)
-	1:  Bollurnar - 285
-	2:  Milfs - 285
-	3:  BMB & LÞB - 270
+SK1 -> KVK-KVK   (5 lið)
+	1:  Chubby No More's - 290
+	2:  BMB & LÞB - 280
+	3:  Kjötsúpan - 280
 
 
 SK1 -> KK-KVK   (3 lið)
 	1:  Actuar bandið - 295
-	2:  Hung over redhead man og Diljá besta - 280
-	3:  K og H - 280
+	2:  K og H - 285
+	3:  Hung over redhead man og Diljá besta - 275
 
 
 SK2 -> general   (1 lið)
