@@ -1,9 +1,3 @@
-RX -> general   (21 lið)
-	1:  Staðan? - 290
-	2:  Team Ginger - 285
-	3:  Festive bois - 220
-
-
 RX -> KK-KK   (9 lið)
 	1:  Staðan? - 295
 	2:  Team Ginger - 290
@@ -22,12 +16,6 @@ RX -> KK-KVK   (6 lið)
 	3:  Endurance álfarnir - 265
 
 
-SK1 -> general   (14 lið)
-	1:  Geiturnar_Nokkvi_Baldur - 295
-	2:  Alex Ferguson - 275
-	3:  Villikettirnir - 240
-
-
 SK1 -> KK-KK   (6 lið)
 	1:  Geiturnar_Nokkvi_Baldur - 295
 	2:  Alex Ferguson - 280
@@ -44,10 +32,6 @@ SK1 -> KK-KVK   (3 lið)
 	1:  Actuar bandið - 295
 	2:  K og H - 285
 	3:  Hung over redhead man og Diljá besta - 275
-
-
-SK2 -> general   (1 lið)
-	1:  Lexi og Simmi - 300
 
 
 SK2 -> KK-KK   (1 lið)
