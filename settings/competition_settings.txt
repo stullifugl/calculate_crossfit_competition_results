@@ -1,24 +1,26 @@
 This is the setting file for this python script
 Add all the workouts you wish in the Workouts setting list and add settings for those workouts
+
 Available settings for workouts are the following
     ScoredByTime =>    mandatory 
         -   Workouts are either won by having the best time or the highest score
         -   True means it's scored by the best time
         -   This field effects how the scores are calculated
+
 The name of the competition is defined in the CompetitionName setting
+
 The settings availabe for every competition are as follows
     CompetitionCategories -> The categories that competitors can compete in (f.x. RX and Scaled)
     TeamCompetition -> Is this an individual competition or a team competition with two competitors
 
 ###CompetitionName
-    Jolaleikarnir
+    Rig2022
 ###CompetitionName
 
 ###CompetitionSettings
     ###CompetitionCategories
         RX
-        SK1
-        SK2
+        SK
     ###CompetitionCategories
 
     ###TeamCompetition
@@ -30,18 +32,19 @@ The settings availabe for every competition are as follows
     workout1
     workout2
     workout3
+    workout4
 ###Workouts
 
 
 ###workout1
     ###ScoredByTime
-        False
+        True
     ###ScoredByTime
 ###workout1
 
 ###workout2
     ###ScoredByTime
-        False
+        True
     ###ScoredByTime
 ###workout2
 
@@ -50,3 +53,9 @@ The settings availabe for every competition are as follows
         True
     ###ScoredByTime
 ###workout3
+
+###workout4
+    ###ScoredByTime
+        False
+    ###ScoredByTime
+###workout4

@@ -6,11 +6,13 @@ import os
 
 PATH = 'competitions'
 
+
 def appendZeroIfNeededToTime(number: int) -> str:
     if number < 10:
         return '0' + str(number)
 
     return str(number)
+
 
 def generateRandomScore(scoredByTime: bool) -> str:
     if scoredByTime == False:
@@ -21,10 +23,12 @@ def generateRandomScore(scoredByTime: bool) -> str:
 
         return randomNumberOne + ':' + randomNumberTwo
 
+
 def getWorkoutSetting(fileName: str, workoutSetting: str) -> str:
     workoutSettingsLines = shared.getSettingInLineList(fileName)
-    
+
     return shared.getSettingInLineList(workoutSetting, workoutSettingsLines)[0]
+
 
 def fillWorkoutsWithData(writer, fileName: str) -> None:
     scoredByTime = False
@@ -35,9 +39,11 @@ def fillWorkoutsWithData(writer, fileName: str) -> None:
     for team in teams:
         dict = {}
         if consts.ADDRANDOMSCORES:
-            dict={'_': '_', shared.getWorkoutFieldToIndexFor(): team[shared.getWorkoutFieldToIndexFor()], 'Skor': generateRandomScore(scoredByTime)}
+            dict = {'_': '_', shared.getWorkoutFieldToIndexFor(
+            ): team[shared.getWorkoutFieldToIndexFor()], 'Skor': generateRandomScore(scoredByTime)}
         else:
-            dict={'_': '_', shared.getWorkoutFieldToIndexFor(): team[shared.getWorkoutFieldToIndexFor()], 'Skor': ''}
+            dict = {'_': '_', shared.getWorkoutFieldToIndexFor(
+            ): team[shared.getWorkoutFieldToIndexFor()], 'Skor': ''}
         writer.writerow(dict)
 
 
@@ -52,6 +58,7 @@ def createWorkoutFiles(fileNames: list) -> None:
             # Add all the teams to the workout files as well
             fillWorkoutsWithData(writer, name)
 
+
 def addRandomDataToTeamFile(writer, fields: list) -> None:
     nrOfTeams = random.randint(30, 50)
     categories = shared.getCategories()
@@ -60,11 +67,14 @@ def addRandomDataToTeamFile(writer, fields: list) -> None:
     dict = {}
     for i in range(0, nrOfTeams):
         dict = {}
-        firstRandomCategory = random.randint(len(fields) - len(categories), len(fields) - 1)
+        firstRandomCategory = random.randint(
+            len(fields) - len(categories), len(fields) - 1)
         secondRandomCategory = -1
         if len(secondCategorylist) > 0:
-            secondRandomCategory = random.randint(len(fields) - len(secondCategorylist), len(fields) - 1)
-            firstRandomCategory = random.randint(len(fields) - len(secondCategorylist) - len(firstCategoryList), len(fields) - len(secondCategorylist) - 1)
+            secondRandomCategory = random.randint(
+                len(fields) - len(secondCategorylist), len(fields) - 1)
+            firstRandomCategory = random.randint(len(fields) - len(secondCategorylist) - len(
+                firstCategoryList), len(fields) - len(secondCategorylist) - 1)
         for x in range(0, len(fields)):
             if '_' in fields[x]:
                 dict[fields[x]] = '_'
@@ -80,6 +90,7 @@ def addRandomDataToTeamFile(writer, fields: list) -> None:
                     dict[fields[x]] = ''
         writer.writerow(dict)
 
+
 def createTeamFile(path: str) -> None:
     fields = shared.getTeamFields()
 
@@ -89,6 +100,7 @@ def createTeamFile(path: str) -> None:
 
         if consts.ADDRANDOMTEAMS:
             addRandomDataToTeamFile(writer, fields)
+
 
 def updateTeamFile(lineList: list) -> None:
     fields = shared.getTeamFields()
@@ -110,17 +122,14 @@ def updateTeamFile(lineList: list) -> None:
 
 def createCompetitionFolder() -> None:
     competitionName = shared.getCompetitionName()
-    
+
     if not os.path.exists(PATH + '/' + competitionName):
         os.mkdir(PATH + '/' + competitionName)
-    
+
     createTeamFile(PATH + '/' + competitionName + '/lidin.csv')
 
-def setupTeams() -> None:
-    createCompetitionFolder()
 
 def setupWorkouts() -> None:
+    createCompetitionFolder()
     fileNameList = shared.getAllWorkouts()
     createWorkoutFiles(fileNameList)
-
-    

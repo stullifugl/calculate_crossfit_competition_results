@@ -4,6 +4,7 @@ import python_files.consts as consts
 import python_files.shared as shared
 import python_files.change_team_category as change_team_category
 
+
 def main():
     print("1: Setup workouts based on settings")
     print("2: Calculate workout results based on inputs")
@@ -17,12 +18,13 @@ def main():
         else:
             if consts.ADDRANDOMSCORES:
                 print("Random scores will be added to the workouts")
-            # setup_workouts.setupWorkouts()
+            setup_workouts.setupWorkouts()
 
     if val == '2':
         calculate_results.calculateWorkouts()
 
     if shared.isTeamCompetition() and val == '3':
         change_team_category.changeTeams()
+
 
 main()
