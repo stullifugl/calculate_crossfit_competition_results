@@ -7,9 +7,11 @@ NONTEAMFIELDS = ['_', 'Nafn']
 TEAMFIELDS = ['_', 'Nafn1', 'Nafn2', 'NafnLids']
 EXTRATEAMFIELDS = ['KK-KK', 'KVK-KVK', 'KK-KVK']
 
+
 def getDictKeys(reader):
     headerLine = next(reader)
     return headerLine[1:]
+
 
 def readFile(fileName: str, fileFolder: str = 'settings') -> list:
     lineList = []
@@ -18,6 +20,7 @@ def readFile(fileName: str, fileFolder: str = 'settings') -> list:
         lineList.append(line)
 
     return lineList
+
 
 def getDataFromFile(fileName: str, folderName: str = "competitions") -> list:
     returnList = []
@@ -29,7 +32,7 @@ def getDataFromFile(fileName: str, folderName: str = "competitions") -> list:
             dict = {}
             for i in range(1, len(row)):
                 if dictKeys[i - 1] == 'Skor' and row[i] != '':
-                    
+
                     newStr = row[i].replace(':', '.')
                     dict[dictKeys[i - 1]] = float(newStr)
                 else:
@@ -38,12 +41,15 @@ def getDataFromFile(fileName: str, folderName: str = "competitions") -> list:
 
     return returnList
 
+
 def logError(error: str) -> None:
     print("Error ____ " + error + " _____")
+
 
 def debugDictList(dictList: list) -> None:
     for item in dictList:
         print(item)
+
 
 def getSettingInLineList(setting: str, lineList: list = readFile('competition_settings.txt')) -> list:
     returnList = []
@@ -62,34 +68,40 @@ def getSettingInLineList(setting: str, lineList: list = readFile('competition_se
 
     return returnList
 
+
 def isTeamCompetition() -> bool:
     competitionSettings = getSettingInLineList('CompetitionSettings')
 
     return getSettingInLineList('TeamCompetition', competitionSettings)[0] == 'True'
 
+
 def getCategories() -> list:
     competitionSettings = getSettingInLineList('CompetitionSettings')
     teamCompetition = isTeamCompetition()
-    categories = getSettingInLineList('CompetitionCategories', competitionSettings)
+    categories = getSettingInLineList(
+        'CompetitionCategories', competitionSettings)
     if teamCompetition:
         categories.extend(EXTRATEAMFIELDS)
-    
+
     return categories
+
 
 def getCategoriesForFolderCreation() -> tuple:
     competitionSettings = getSettingInLineList('CompetitionSettings')
-    categories = getSettingInLineList('CompetitionCategories', competitionSettings)
+    categories = getSettingInLineList(
+        'CompetitionCategories', competitionSettings)
     teamCompetition = isTeamCompetition()
 
     if teamCompetition:
         return categories, EXTRATEAMFIELDS
-    
+
     return categories, []
+
 
 def getTeamFields() -> list:
     teamCompetition = isTeamCompetition()
     categoryList = getCategories()
-    
+
     if teamCompetition:
         newList = TEAMFIELDS
         newList.extend(categoryList)
@@ -101,13 +113,16 @@ def getTeamFields() -> list:
 
         return newList
 
+
 def getCompetitionName() -> str:
     nameSettings = getSettingInLineList('CompetitionName')
 
     return nameSettings[0].replace(" ", "_")
 
+
 def getWorkouts() -> list:
     return getSettingInLineList('Workouts')
+
 
 def getWorkoutFields() -> list:
     if isTeamCompetition():
@@ -115,16 +130,19 @@ def getWorkoutFields() -> list:
     else:
         return ['_', 'Nafn', 'Skor']
 
+
 def getWorkoutFieldToIndexFor() -> str:
     if isTeamCompetition():
         return 'NafnLids'
     else:
         return 'Nafn'
 
+
 def getAllWorkouts() -> list:
     fileNameList = getSettingInLineList('Workouts')
 
     return fileNameList
+
 
 def getTeamsCategories(teamDict: dict, categories: list) -> str:
     returnString = ""
@@ -137,6 +155,7 @@ def getTeamsCategories(teamDict: dict, categories: list) -> str:
                 returnString = returnString + '_' + category
 
     return returnString
+
 
 def getTeamsInCertainCategory(category: str) -> list:
     if category == "":
@@ -159,6 +178,7 @@ def getTeamsInCertainCategory(category: str) -> list:
                 returnList.append(team)
 
     return returnList
+
 
 def getAllTeams() -> list:
     return getDataFromFile('lidin.csv')

@@ -1,0 +1,48 @@
+RX -> general   (24 lið)
+	1:  Lid29 - 345
+	2:  Lid12 - 300
+	3:  Lid1 - 270
+
+
+RX -> KK-KK   (13 lið)
+	1:  Lid29 - 365
+	2:  Lid12 - 335
+	3:  Lid1 - 325
+
+
+RX -> KVK-KVK   (6 lið)
+	1:  Lid20 - 370
+	2:  Lid41 - 360
+	3:  Lid5 - 350
+
+
+RX -> KK-KVK   (5 lið)
+	1:  Lid19 - 380
+	2:  Lid21 - 370
+	3:  Lid17 - 365
+
+
+SK -> general   (19 lið)
+	1:  Lid31 - 310
+	2:  Lid3 - 305
+	3:  Lid32 - 300
+
+
+SK -> KK-KK   (4 lið)
+	1:  Lid3 - 390
+	2:  Lid10 - 375
+	3:  Lid11 - 375
+
+
+SK -> KVK-KVK   (9 lið)
+	1:  Lid31 - 360
+	2:  Lid2 - 350
+	3:  Lid32 - 350
+
+
+SK -> KK-KVK   (6 lið)
+	1:  Lid6 - 365
+	2:  Lid22 - 365
+	3:  Lid16 - 355
+
+

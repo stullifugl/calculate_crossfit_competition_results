@@ -125,8 +125,7 @@ def createCompetitionFolder() -> None:
 
     if not os.path.exists(PATH + '/' + competitionName):
         os.mkdir(PATH + '/' + competitionName)
-
-    createTeamFile(PATH + '/' + competitionName + '/lidin.csv')
+        createTeamFile(PATH + '/' + competitionName + '/lidin.csv')
 
 
 def setupWorkouts() -> None:
