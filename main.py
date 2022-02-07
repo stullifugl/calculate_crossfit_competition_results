@@ -38,4 +38,10 @@ def main():
         sanitize_teams.sanitizeTeams()
 
 
-main()
+# main()
+
+calculate_results.calculateWorkouts()
+
+
+# v = (65+70) * 1.43
+# print(v)

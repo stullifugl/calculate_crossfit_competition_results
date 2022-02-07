@@ -20,7 +20,6 @@ The settings availabe for every competition are as follows
 ###CompetitionSettings
     ###CompetitionCategories
         RX
-        SK
     ###CompetitionCategories
 
     ###TeamCompetition
